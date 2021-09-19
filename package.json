@@ -1,0 +1,30 @@
+{
+  "name": "spa-resman",
+  "version": "1.0.0",
+  "description": "assessement for senior software ENGR",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run clean && babel -d ./build ./src -s && mkdirp ./build/public/files",
+    "start": "if-env cross-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:dev": "babel-watch -L src/index.js babel-node",
+    "start:prod": "node ./build/index.js"
+  },
+  "author": "EDZ",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "if-env": "^1.0.4"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.3",
+    "@babel/core": "^7.4.3",
+    "@babel/node": "^7.2.2",
+    "@babel/plugin-transform-runtime": "^7.10.1",
+    "@babel/preset-env": "^7.4.3",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.5",
+    "babel-plugin-source-map-support": "^2.0.1",
+    "babel-watch": "^7.5.0"
+  }
+}
