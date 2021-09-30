@@ -6,11 +6,10 @@ import compress from 'compression'
 import cookieSession from 'cookie-session'
 import cors from 'cors'
 import helmet from 'helmet'
-import logger from 'winston'
+import errorHandler from 'utils/errorHandler'
 
 const configuration = async ( req, res, next ) => {
 	req.config = config
-	req.activity = activity
 	req.currentUrl = config.env == 'production' ? config.host: `${config.host}:${config.port}`
 	req.frontEndUrl = config.feDomain
 	req.rootDir = path.join( __dirname,'/' )
@@ -28,6 +27,7 @@ app.use( compress() )
 app.use( express.json() )
 app.use( express.urlencoded({extended: true}) )
 app.use( routes )
+app.use( errorHandler )
 //app.use( express.errorHandler({logger}) )
 
 export default app

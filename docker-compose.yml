@@ -10,6 +10,10 @@ services:
       - 3030:3030
     command: "npm run start"
     tty: true
+    links:
+      - mongodb
+    networks:
+      - webnet
   mongodb:
     image: mongo:latest
     container_name: mongodb
@@ -21,6 +25,11 @@ services:
     ports:
       - 27017:27017
     command: mongod
+    networks:
+      - webnet
+
+networks:
+  webnet:
 
 volumes:
  mongodb:

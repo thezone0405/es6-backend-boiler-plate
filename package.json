@@ -1,13 +1,15 @@
 {
-  "name": "spa-resman",
+  "name": "backend",
   "version": "1.0.0",
-  "description": "assessement for senior software ENGR",
+  "description": "backend boilerplate",
   "main": "index.js",
   "scripts": {
     "build": "npm run clean && babel -d ./build ./src -s && mkdirp ./build/public/files",
     "start": "if-env cross-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:dev": "babel-watch -L src/index.js babel-node",
-    "start:prod": "node ./build/index.js"
+    "start:prod": "node ./build/index.js",
+
+    "unit-test": "jest test/unit-test --watch"
   },
   "author": "EDZ",
   "license": "ISC",
